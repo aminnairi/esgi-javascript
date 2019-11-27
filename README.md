@@ -7,6 +7,7 @@ Repository for the JavaScript course at the ESGI
 - [Git](https://git-scm.com/)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
+- [GNU/Make](https://www.gnu.org/software/make/)
 
 ## Clone
 
@@ -22,3 +23,14 @@ $ git clone https://github.com/aminnairi/esgi-javascript.git
 $ git clone git@github.com:aminnairi/esgi-javascript.git
 ```
 
+## Packages Installation
+
+```console
+$ make install
+```
+
+## Transpile
+
+```console
+$ make transpile
+```
