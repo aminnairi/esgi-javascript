@@ -1,5 +1,7 @@
 # esgi-javascript
 
+Repository for the JavaScript course at the ESGI
+
 ## Requirements
 
 - [Git](https://git-scm.com/)
