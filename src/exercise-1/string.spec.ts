@@ -3,7 +3,7 @@
 import "mocha";
 
 import { expect } from "chai";
-import { ucfirst, capitalize, camelCase, snake_case, leet } from "./string";
+import { ucfirst, capitalize, camelCase, snake_case, leet, prop_access } from "./string";
 
 describe("string.ts", () => {
     describe("uppercase first", () => {
@@ -19,6 +19,7 @@ describe("string.ts", () => {
         });
 
         it("should return the uppercased first letter of the word", () => {
+            expect(ucfirst("TYPESCRIPT")).to.equal("Typescript");
             expect(ucfirst("typescript")).to.equal("Typescript");
         });
     });
@@ -37,6 +38,7 @@ describe("string.ts", () => {
 
         it("should capitalize the word", () => {
             expect(capitalize("typescript by microsoft")).to.equal("Typescript By Microsoft");
+            expect(capitalize("TYPESCRIPT BY MICROSOFT")).to.equal("Typescript By Microsoft");
         });
     });
 
@@ -89,6 +91,49 @@ describe("string.ts", () => {
 
         it("should return the leet version of a string", () => {
             expect(leet("wikipedia")).to.equal("w1k1p3d14");
+        });
+    });
+
+    describe("prop access", () => {
+        it("should return the property", () => {
+            const user = {
+                location: {
+                    city: {
+                        name: "Paris"
+                    }
+                }
+            };
+
+            expect(prop_access(user, "location")).to.deep.equal(user["location"]);
+            expect(prop_access(user, "location.city")).to.deep.equal(user["location"]["city"]);
+            expect(prop_access(user, "location.city.name")).to.equal("Paris");
+        });
+
+        it("should return undefined when accessing an unknown property", () => {
+            const user = {
+                location: {
+                    city: {
+                        name: "Paris"
+                    }
+                }
+            };
+
+            expect(prop_access(user, "city")).to.equal(undefined);
+            expect(prop_access(user, "city.location.city")).to.be.undefined;
+            expect(prop_access(user, "city.location.city.name")).to.be.undefined;
+        });
+
+        it("should return the object when passing an empty property or null", () => {
+            const user = {
+                location: {
+                    city: {
+                        name: "Paris"
+                    }
+                }
+            };
+
+            expect(prop_access(user, "")).to.deep.equal(user);
+            expect(prop_access(user, null)).to.deep.equal(user);
         });
     });
 });
