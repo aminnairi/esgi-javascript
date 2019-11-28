@@ -1,6 +1,6 @@
 # esgi-javascript
 
-[![Node CI Badge](https://github.com/aminnairi/esgi-javascript/workflows/Node%20CI/badge.svg)](https://github.com/aminnairi/esgi-javascript/actions) [![Coverage Status](https://coveralls.io/repos/github/aminnairi/esgi-javascript/badge.svg?branch=master)](https://coveralls.io/github/aminnairi/esgi-javascript?branch=master)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/aminnairi/esgi-javascript/Node%20CI/master)](https://github.com/aminnairi/esgi-javascript/actions) [![Coverage Status](https://coveralls.io/repos/github/aminnairi/esgi-javascript/badge.svg?branch=master)](https://coveralls.io/github/aminnairi/esgi-javascript?branch=master)
 
 Repository for the JavaScript course at the ESGI
 
