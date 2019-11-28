@@ -68,10 +68,9 @@ function leet(input) {
         "y": "7",
         "Y": "7"
     };
-    return [...input].map(function (character) {
-        if (character in crypted) {
-            return crypted[character];
-        }
-        return character;
-    }).join("");
+    const characters = [...input];
+    const encrypt = (character) => character in crypted ? crypted[character] : character;
+    const encryptedCharacters = characters.map(encrypt);
+    const encryptedString = encryptedCharacters.join("");
+    return encryptedString;
 }

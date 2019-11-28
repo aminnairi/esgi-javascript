@@ -1,12 +1,12 @@
 "use strict";
 
-export function ucfirst(input: string): string {
+export function ucfirst(input: unknown): string {
     if (arguments.length !== 1) {
         throw new Error("Expected only one argument");
     }
 
     if (typeof input !== "string") {
-        throw new TypeError("Expected first argument to be a string");
+        return "";
     }
 
     const firstLetter: string = input.slice(0, 1);
@@ -16,13 +16,13 @@ export function ucfirst(input: string): string {
     return firstLetterUppercase + rest;
 }
 
-export function capitalize(input: string): string {
+export function capitalize(input: unknown): string {
     if (arguments.length !== 1) {
         throw new Error("Expected only one argument");
     }
 
     if (typeof input !== "string") {
-        throw new TypeError("Expected first argument to be a string");
+        return "";
     }
 
     const words: string[] = input.split(" ");
@@ -32,13 +32,13 @@ export function capitalize(input: string): string {
     return capitalizedWord;
 }
 
-export function camelCase(input: string): string {
+export function camelCase(input: unknown): string {
     if (arguments.length !== 1) {
         throw new Error("Expected only one argument");
     }
 
     if (typeof input !== "string") {
-        throw new TypeError("Expected first argument to be a string");
+        return "";
     }
 
     const words: string[] = input.split(" ");
@@ -48,13 +48,13 @@ export function camelCase(input: string): string {
     return camelCasedWord;
 }
 
-export function snakeCase(input: string): string {
+export function snakeCase(input: unknown): string {
     if (arguments.length !== 1) {
         throw new Error("Expected only one argument");
     }
 
     if (typeof input !== "string") {
-        throw new TypeError("Expected first argument to be a string");
+        return "";
     }
 
     const words: string[] = input.split(" ");
@@ -64,13 +64,35 @@ export function snakeCase(input: string): string {
     return snakeCasedWord;
 }
 
-export function leet(input: string): string {
-    const crypted = {
+export function leet(input: unknown): string {
+    if (arguments.length !== 1) {
+        throw new Error("Expected only one argument");
+    }
+
+    if (typeof input !== "string") {
+        return "";
+    }
+
+    const crypted: {[key: string]: string} = {
         "a": "4",
         "A": "4",
         "e": "3",
         "E": "3",
         "i": "1",
         "I": "1",
+        "o": "0",
+        "O": "0",
+        "u": "(_)",
+        "U": "(_)",
+        "y": "7",
+        "Y": "7"
     };
+
+    return [...input].map(function(character: string): string {
+        if (character in crypted) {
+            return crypted[character];
+        }
+
+        return character;
+    }).join("");
 }
