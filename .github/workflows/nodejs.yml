@@ -23,7 +23,7 @@ jobs:
         npm run build
         npm test
     - name: Coveralls
-      if: github.ref === "refs/head/master"
+      if: github.ref == "refs/head/master"
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
