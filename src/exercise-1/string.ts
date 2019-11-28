@@ -11,7 +11,7 @@ export function ucfirst(input: unknown): string {
 
     const firstLetter: string = input.slice(0, 1);
     const firstLetterUppercase: string = firstLetter.toUpperCase();
-    const rest: string = input.slice(1);
+    const rest: string = input.slice(1).toLowerCase();
 
     return firstLetterUppercase + rest;
 }
@@ -94,4 +94,26 @@ export function leet(input: unknown): string {
     const encryptedString: string = encryptedCharacters.join("");
 
     return encryptedString;
+}
+
+interface PropAccessInput {
+    [key: string]: PropAccessInput | unknown
+};
+
+export function prop_access(input: PropAccessInput, properties: string | null, tested: string[] = []): unknown {
+    if (properties === null || properties.length === 0) {
+        return input;
+    }
+
+    const [first, ...rest]: string[] = properties.split(".");
+
+    tested.push(first)
+
+    if (!(first in input)) {
+        const stringified: string = tested.join(".");
+
+        return console.log(`${stringified} not exist`);
+    }
+
+    return prop_access(input[first] as PropAccessInput, rest.join("."), tested);
 }

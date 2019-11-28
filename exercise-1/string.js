@@ -8,7 +8,7 @@ function ucfirst(input) {
     }
     const firstLetter = input.slice(0, 1);
     const firstLetterUppercase = firstLetter.toUpperCase();
-    const rest = input.slice(1);
+    const rest = input.slice(1).toLowerCase();
     return firstLetterUppercase + rest;
 }
 function capitalize(input) {
@@ -35,7 +35,7 @@ function camelCase(input) {
     const camelCasedWord = capitalizedWords.join("");
     return camelCasedWord;
 }
-function snakeCase(input) {
+function snake_case(input) {
     if (arguments.length !== 1) {
         throw new Error("Expected only one argument");
     }
@@ -73,4 +73,17 @@ function leet(input) {
     const encryptedCharacters = characters.map(encrypt);
     const encryptedString = encryptedCharacters.join("");
     return encryptedString;
+}
+;
+function prop_access(input, properties, tested = []) {
+    if (properties === null || properties.length === 0) {
+        return input;
+    }
+    const [first, ...rest] = properties.split(".");
+    tested.push(first);
+    if (!(first in input)) {
+        const stringified = tested.join(".");
+        return console.log(`${stringified} not exist`);
+    }
+    return prop_access(input[first], rest.join("."), tested);
 }
