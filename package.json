@@ -13,8 +13,8 @@
     "url": "git+https://github.com/aminnairi/esgi-javascript.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Amin NAIRI <nairi_a16@myges.fr>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/aminnairi/esgi-javascript/issues"
   },
