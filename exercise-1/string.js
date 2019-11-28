@@ -8,7 +8,7 @@ function ucfirst(input) {
     }
     const firstLetter = input.slice(0, 1);
     const firstLetterUppercase = firstLetter.toUpperCase();
-    const rest = input.slice(1).toLowerCase();
+    const rest = input.slice(1);
     return firstLetterUppercase + rest;
 }
 function capitalize(input) {
@@ -19,7 +19,7 @@ function capitalize(input) {
         return "";
     }
     const words = input.split(" ");
-    const capitalizedWords = words.map(word => ucfirst(word));
+    const capitalizedWords = words.map(word => ucfirst(word.toLowerCase()));
     const capitalizedWord = capitalizedWords.join(" ");
     return capitalizedWord;
 }

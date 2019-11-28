@@ -11,7 +11,7 @@ export function ucfirst(input: unknown): string {
 
     const firstLetter: string = input.slice(0, 1);
     const firstLetterUppercase: string = firstLetter.toUpperCase();
-    const rest: string = input.slice(1).toLowerCase();
+    const rest: string = input.slice(1);
 
     return firstLetterUppercase + rest;
 }
@@ -26,7 +26,7 @@ export function capitalize(input: unknown): string {
     }
 
     const words: string[] = input.split(" ");
-    const capitalizedWords: string[] = words.map(word => ucfirst(word));
+    const capitalizedWords: string[] = words.map(word => ucfirst(word.toLowerCase()));
     const capitalizedWord: string = capitalizedWords.join(" ");
 
     return capitalizedWord;
