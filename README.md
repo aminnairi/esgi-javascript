@@ -1,5 +1,7 @@
 # esgi-javascript
 
+[![Node CI Badge](https://github.com/aminnairi/esgi-javascript/workflows/Node%20CI/badge.svg)](https://github.com/aminnairi/esgi-javascript/actions)
+
 Repository for the JavaScript course at the ESGI
 
 ## Requirements
