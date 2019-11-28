@@ -3,7 +3,7 @@
 import "mocha";
 
 import { expect } from "chai";
-import { ucfirst, capitalize, camelCase, snake_case, leet, prop_access } from "./string";
+import { ucfirst, capitalize, camelCase, snake_case, leet, prop_access, verlan } from "./string";
 
 describe("string.ts", () => {
     describe("uppercase first", () => {
@@ -134,6 +134,24 @@ describe("string.ts", () => {
 
             expect(prop_access(user, "")).to.deep.equal(user);
             expect(prop_access(user, null)).to.deep.equal(user);
+        });
+    });
+
+    describe("verlan", () => {
+        it("should throw an error when passing an incorrect amount of arguments", () => {
+            // @ts-ignore
+            expect(() => verlan()).to.throw(Error);
+            // @ts-ignore
+            expect(() => verlan("", "")).to.throw(Error);
+        });
+
+        it("should return an empty string when providing something other than a string", () => {
+            // @ts-ignore
+            expect(verlan(1)).to.equal("");
+        });
+
+        it("should return the reversed words", () => {
+            expect(verlan("Hello world")).to.equal("olleH dlrow");
         });
     });
 });
