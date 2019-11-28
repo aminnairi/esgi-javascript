@@ -62,6 +62,8 @@ describe("string.ts", () => {
     describe("snake case", () => {
         it("should return the snake cased word", () => {
             expect(snake_case("typescript or nothing")).to.equal("typescript_or_nothing");
+            expect(snake_case("typescript or_nothing")).to.equal("typescript_or_nothing");
+            expect(snake_case("typeScript Or_nothing")).to.equal("typescript_or_nothing");
         });
 
         it("should throw an exception when providing an incorrect amount of arguments", () => {
