@@ -117,3 +117,19 @@ export function prop_access(input: PropAccessInput, properties: string | null, t
 
     return prop_access(input[first] as PropAccessInput, rest.join("."), tested);
 }
+
+export function verlan(input: string): string {
+    if (arguments.length !== 1) {
+        throw new Error("Expected only one argument");
+    }
+
+    if (typeof input !== "string") {
+        return "";
+    }
+
+    const words: string[] = input.split(" ");
+    const reversed: string[] = words.map(word => [...word].reverse().join(""));
+    const newInput: string = reversed.join(" ");
+
+    return newInput;
+}
