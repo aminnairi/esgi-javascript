@@ -3,7 +3,7 @@
 import "mocha";
 
 import { expect } from "chai";
-import { ucfirst, capitalize, camelCase, snake_case, leet, prop_access, verlan, yoda } from "./string";
+import { ucfirst, capitalize, camelCase, snake_case, leet, prop_access, verlan, yoda, vig } from "./string";
 
 describe("string.ts", () => {
     describe("uppercase first", () => {
@@ -173,6 +173,36 @@ describe("string.ts", () => {
 
         it("should return the reversed words", () => {
             expect(yoda("Hello world")).to.equal("world Hello");
+        });
+    });
+
+    describe("vig", () => {
+        it("should throw an error when passing an incorrect amount of arguments", () => {
+            // @ts-ignore
+            expect(() => vig()).to.throw(Error);
+            // @ts-ignore
+            expect(() => vig("vig")).to.throw(Error);
+            // @ts-ignore
+            expect(() => vig("vig", "vig", "vig")).to.throw(Error);
+        });
+
+        it("should throw an error when providing something other than a string", () => {
+            // @ts-ignore
+            expect(() => vig(1, "vig")).to.throw(TypeError);
+            // @ts-ignore
+            expect(() => vig("vig", 1)).to.throw(TypeError);
+        });
+
+        it("should throw an error when providing empty strings", () => {
+            expect(() => vig("", "vig")).to.throw(ReferenceError);
+            expect(() => vig("vig", "")).to.throw(ReferenceError);
+            expect(() => vig("", "")).to.throw(ReferenceError);
+        });
+
+        it("should return the encrypted string", () => {
+            expect(vig("wikipedia", "crypto")).to.equal("yzixisfzy");
+            expect(vig("j'adore ecouter la radio toute la journee", "musique")).to.equal("v'uvwhy ioimbul pm lslyi xaolm bu naojvuy");
+            expect(vig("J'ADORE ECOUTER LA RADIO TOUTE LA JOURNEE", "MUSIQUE")).to.equal("V'UVWHY IOIMBUL PM LSLYI XAOLM BU NAOJVUY");
         });
     });
 });
