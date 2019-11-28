@@ -5,7 +5,7 @@
   "description": "Repository for the JavaScript course at the ESGI",
   "main": "demo.js",
   "scripts": {
-    "transpile": "tsc",
+    "build": "tsc",
     "test": "nyc mocha --require ts-node/register src/**/*.spec.ts"
   },
   "repository": {
