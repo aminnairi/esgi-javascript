@@ -57,7 +57,7 @@ export function snake_case(input: unknown): string {
         return "";
     }
 
-    const words: string[] = input.split(" ");
+    const words: string[] = input.split(/\W/g);
     const lowercasedWords: string[] = words.map(word => word.toLowerCase());
     const snakeCasedWord: string = lowercasedWords.join("_");
 
