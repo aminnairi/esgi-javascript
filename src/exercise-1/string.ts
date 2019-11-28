@@ -63,3 +63,14 @@ export function snakeCase(input: string): string {
 
     return snakeCasedWord;
 }
+
+export function leet(input: string): string {
+    const crypted = {
+        "a": "4",
+        "A": "4",
+        "e": "3",
+        "E": "3",
+        "i": "1",
+        "I": "1",
+    };
+}
