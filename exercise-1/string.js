@@ -87,3 +87,15 @@ function prop_access(input, properties, tested = []) {
     }
     return prop_access(input[first], rest.join("."), tested);
 }
+function verlan(input) {
+    if (arguments.length !== 1) {
+        throw new Error("Expected only one argument");
+    }
+    if (typeof input !== "string") {
+        return "";
+    }
+    const words = input.split(" ");
+    const reversed = words.map(word => [...word].reverse().join(""));
+    const newInput = reversed.join(" ");
+    return newInput;
+}
