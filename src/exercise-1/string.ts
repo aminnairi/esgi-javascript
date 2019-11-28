@@ -48,7 +48,7 @@ export function camelCase(input: unknown): string {
     return camelCasedWord;
 }
 
-export function snakeCase(input: unknown): string {
+export function snake_case(input: unknown): string {
     if (arguments.length !== 1) {
         throw new Error("Expected only one argument");
     }

@@ -3,7 +3,7 @@
 import "mocha";
 
 import { expect } from "chai";
-import { ucfirst, capitalize, camelCase, snakeCase, leet } from "./string";
+import { ucfirst, capitalize, camelCase, snake_case, leet } from "./string";
 
 describe("string.ts", () => {
     describe("uppercase first", () => {
@@ -59,19 +59,19 @@ describe("string.ts", () => {
 
     describe("snake case", () => {
         it("should return the snake cased word", () => {
-            expect(snakeCase("typescript or nothing")).to.equal("typescript_or_nothing");
+            expect(snake_case("typescript or nothing")).to.equal("typescript_or_nothing");
         });
 
         it("should throw an exception when providing an incorrect amount of arguments", () => {
             // @ts-ignore
-            expect(() => snakeCase()).to.throw(Error);
+            expect(() => snake_case()).to.throw(Error);
             // @ts-ignore
-            expect(() => snakeCase("", "")).to.throw(Error);
+            expect(() => snake_case("", "")).to.throw(Error);
         });
 
         it("should an empty string when passing something other than a string", () => {
             // @ts-ignore
-            expect(snakeCase(1)).to.equal("");
+            expect(snake_case(1)).to.equal("");
         });
     });
 
