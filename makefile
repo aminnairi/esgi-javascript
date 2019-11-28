@@ -8,4 +8,5 @@ build:
 	docker-compose run shell sed -i "/exports/d" exercise-*/*.js
 
 test:
+	docker-compose run shell rm -rf coverage .nyc_output
 	docker-compose run npm test
