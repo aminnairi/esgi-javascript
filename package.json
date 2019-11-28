@@ -26,7 +26,8 @@
     "all": true,
     "reporter": [
       "text",
-      "html"
+      "html",
+      "lcov"
     ]
   },
   "homepage": "https://github.com/aminnairi/esgi-javascript#readme",
