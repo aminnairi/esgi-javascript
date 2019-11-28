@@ -29,8 +29,8 @@ $ git clone git@github.com:aminnairi/esgi-javascript.git
 $ make install
 ```
 
-## Transpile
+## Build
 
 ```console
-$ make transpile
+$ make build
 ```
