@@ -5,4 +5,4 @@ install:
 
 transpile:
 	docker-compose run npm run transpile
-	docker-compose run shell sed -i "/exports/d" exercice-1/string.js
+	docker-compose run shell sed -i "/exports/d" exercise-*/*.js
