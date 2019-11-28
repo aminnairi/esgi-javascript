@@ -19,7 +19,7 @@ describe("string.ts", () => {
         });
 
         it("should return the uppercased first letter of the word", () => {
-            expect(ucfirst("TYPESCRIPT")).to.equal("Typescript");
+            expect(ucfirst("TYPESCRIPT")).to.equal("TYPESCRIPT");
             expect(ucfirst("typescript")).to.equal("Typescript");
         });
     });
