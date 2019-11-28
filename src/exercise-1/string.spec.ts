@@ -56,6 +56,7 @@ describe("string.ts", () => {
 
         it("should return the camel cased word", () => {
             expect(camelCase("typescript by microsoft")).to.equal("TypescriptByMicrosoft");
+            expect(camelCase("typeScript by_microsoft")).to.equal("TypescriptByMicrosoft");
         });
     });
 

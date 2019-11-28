@@ -41,7 +41,7 @@ export function camelCase(input: unknown): string {
         return "";
     }
 
-    const words: string[] = input.split(" ");
+    const words: string[] = input.split(/[^a-zA-Z0-9]/);
     const capitalizedWords: string[] = words.map(word => ucfirst(word.toLowerCase()))
     const camelCasedWord: string = capitalizedWords.join("");
 
