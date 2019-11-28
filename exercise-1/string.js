@@ -99,3 +99,15 @@ function verlan(input) {
     const newInput = reversed.join(" ");
     return newInput;
 }
+function yoda(input) {
+    if (arguments.length !== 1) {
+        throw new Error("Expected only one argument");
+    }
+    if (typeof input !== "string") {
+        return "";
+    }
+    const words = input.split(" ");
+    const reversed = words.reverse();
+    const reversedInput = reversed.join(" ");
+    return reversedInput;
+}
