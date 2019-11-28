@@ -22,5 +22,10 @@ jobs:
         npm install
         npm run build
         npm test
+    - name: Coveralls
+      if: github.ref === "refs/head/master"
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
       env:
         CI: true
