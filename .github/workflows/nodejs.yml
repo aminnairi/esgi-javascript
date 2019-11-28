@@ -12,7 +12,8 @@ jobs:
     test:
         name: install, build, unit testings & code coverage
         runs-on: ubuntu-latest
-        run: |
-            npm install
-            npm run build
-            npm test
+        steps:
+            run: |
+                npm install
+                npm run build
+                npm test
