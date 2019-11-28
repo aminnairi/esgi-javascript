@@ -133,3 +133,19 @@ export function verlan(input: string): string {
 
     return newInput;
 }
+
+export function yoda(input: string): string {
+    if (arguments.length !== 1) {
+        throw new Error("Expected only one argument");
+    }
+
+    if (typeof input !== "string") {
+        return "";
+    }
+
+    const words: string[] = input.split(" ");
+    const reversed: string[] = words.reverse();
+    const reversedInput: string = reversed.join(" ");
+
+    return reversedInput;
+}
