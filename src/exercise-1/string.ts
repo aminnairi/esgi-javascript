@@ -149,3 +149,56 @@ export function yoda(input: string): string {
 
     return reversedInput;
 }
+
+
+function isLowerCase(input: string): boolean {
+    return /[a-z]/.test(input);
+}
+
+function isUpperCase(input: string): boolean {
+    return /[A-Z]/.test(input);
+}
+
+export function vig(input: string, key: string): string {
+    if (arguments.length !== 2) {
+        throw new Error("Expected exactly two arguments");
+    }
+
+    if (typeof input !== "string") {
+        throw new TypeError("First argument expected to be a string");
+    }
+
+    if (typeof key !== "string") {
+        throw new TypeError("Second argument expected to be a string");
+    }
+
+    if (input.length === 0) {
+        throw new ReferenceError("First argument must not be empty");
+    }
+
+    if (key.length === 0) {
+        throw new ReferenceError("Second argument must not be empty");
+    }
+
+    const INPUT_LENGTH: number = input.length;
+    const KEY_LENGTH: number = key.length;
+    let result: string = "";
+
+    for (let index: number = 0, characterIndex: number = 0; index < INPUT_LENGTH; index++) {
+        if (isUpperCase(input[index])) {
+            result += String.fromCharCode((input.charCodeAt(index) - 65 + key.charCodeAt(characterIndex % KEY_LENGTH) - 65) % 26 + 65)
+            characterIndex++;
+            continue;
+        }
+
+        if (isLowerCase(input[index])) {
+            result += String.fromCharCode((input.charCodeAt(index) - 97 + key.charCodeAt(characterIndex % KEY_LENGTH) - 97) % 26 + 97)
+            characterIndex++;
+            continue;
+        }
+
+        result += input[index];
+    }
+
+    return result;
+}
