@@ -88,11 +88,10 @@ export function leet(input: unknown): string {
         "Y": "7"
     };
 
-    return [...input].map(function(character: string): string {
-        if (character in crypted) {
-            return crypted[character];
-        }
+    const characters: string[] = [...input];
+    const encrypt = (character: string): string => character in crypted ? crypted[character] : character;
+    const encryptedCharacters: string[] = characters.map(encrypt);
+    const encryptedString: string = encryptedCharacters.join("");
 
-        return character;
-    }).join("");
+    return encryptedString;
 }
