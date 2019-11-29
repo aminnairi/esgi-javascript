@@ -15,8 +15,17 @@ function type_check_v2(input, options) {
     if (options.hasOwnProperty("type") && !type_check_v1(input, options.type)) {
         return false;
     }
-    if (options.hasOwnProperty("value") && input !== options.value) {
-        return false;
+    if (options.hasOwnProperty("value")) {
+        if (type_check_v1(input, "object")) {
+            if (type_check_v1(options.value, "object") && JSON.stringify(options.value) !== JSON.stringify(input)) {
+                return false;
+            }
+        }
+        else {
+            if (input !== options.value) {
+                return false;
+            }
+        }
     }
     if (options.hasOwnProperty("enum") && !options.enum.includes(input)) {
         return false;
