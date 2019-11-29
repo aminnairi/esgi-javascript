@@ -7,6 +7,18 @@ import { type_check_v1 } from "./type-check";
 
 describe("type check", () => {
     describe("type check v1", () => {
+        it("should throw an error when providing an incorrect amount of arguments", () => {
+            // @ts-ignore
+            expect(() => type_check_v1()).to.throw(Error);
+            // @ts-ignore
+            expect(() => type_check_v1("", "", "")).to.throw(Error);
+        });
+
+        it("should throw an error when providing something other than a string for the second argument", () => {
+            // @ts-ignore
+            expect(() => type_check_v1("", 1)).to.throw(TypeError);
+        });
+
         it("should work for numbers", () => {
             expect(type_check_v1(1, "number")).to.be.true;
             expect(type_check_v1(1, "string")).to.be.false;
