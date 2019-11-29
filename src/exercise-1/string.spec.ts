@@ -124,6 +124,7 @@ describe("string.ts", () => {
             expect(prop_access(user, "city")).to.equal(undefined);
             expect(prop_access(user, "city.location.city")).to.be.undefined;
             expect(prop_access(user, "city.location.city.name")).to.be.undefined;
+            expect(prop_access(null, "city.location.city.name")).to.be.undefined;
         });
 
         it("should return the object when passing an empty property or null", () => {
