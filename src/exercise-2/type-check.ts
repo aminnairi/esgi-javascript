@@ -1,5 +1,11 @@
 "use strict";
 
+interface TypeCheckV2Options {
+    type?: string;
+    value?: unknown;
+    enum?: unknown[];
+};
+
 export function type_check_v1(input: unknown, expectedType: string) {
     if (arguments.length !== 2) {
         throw new Error("Expected exactly two arguments");
@@ -15,3 +21,18 @@ export function type_check_v1(input: unknown, expectedType: string) {
     return inputType === computedExpectedType;
 }
 
+export function type_check_v2(input: unknown, options: TypeCheckV2Options) {
+    if (options.hasOwnProperty("type") && !type_check_v1(input, (options.type as string))) {
+        return false;
+    }
+
+    if (options.hasOwnProperty("value") && input !== (options.value as string)) {
+        return false;
+    }
+
+    if (options.hasOwnProperty("enum") && !(options.enum as unknown[]).includes(input)) {
+        return false;
+    }
+
+    return true;
+}
