@@ -71,5 +71,10 @@ describe("type check", () => {
             expect(type_check_v2(3, { enum: [ "3", true, 3 ] })).to.be.true;
             expect(type_check_v2(3, { enum: [ "2", true, 2 ] })).to.be.false;
         });
+
+        it("should work for object comparison", () => {
+            expect(type_check_v2({ a: 1 }, { type: "object", value: { a: 1 } })).to.be.true;
+            expect(type_check_v2({ a: 2 }, { type: "object", value: { a: 1 } })).to.be.false;
+        });
     });
 });
