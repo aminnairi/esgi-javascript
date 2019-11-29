@@ -186,9 +186,11 @@ describe("string.ts", () => {
             expect(() => vig("vig", "vig", "vig")).to.throw(Error);
         });
 
-        it("should throw an error when providing something other than a string", () => {
-            // @ts-ignore
-            expect(() => vig(1, "vig")).to.throw(TypeError);
+        it("should return an empty string when providing something other than a string for the input", () => {
+            expect(vig(1, "key")).to.equal("");
+        });
+
+        it("should throw an error when providing something other than a string for the key", () => {
             // @ts-ignore
             expect(() => vig("vig", 1)).to.throw(TypeError);
         });
@@ -202,7 +204,7 @@ describe("string.ts", () => {
         it("should return the encrypted string", () => {
             expect(vig("wikipedia", "crypto")).to.equal("yzixisfzy");
             expect(vig("j'adore ecouter la radio toute la journee", "musique")).to.equal("v'uvwhy ioimbul pm lslyi xaolm bu naojvuy");
-            expect(vig("J'ADORE ECOUTER LA RADIO TOUTE LA JOURNEE", "MUSIQUE")).to.equal("V'UVWHY IOIMBUL PM LSLYI XAOLM BU NAOJVUY");
+            expect(vig("J'ADORE ECOUTER LA RADIO TOUTE LA JOURNEE", "MUSIQUE")).to.equal("v'uvwhy ioimbul pm lslyi xaolm bu naojvuy");
         });
     });
 });
