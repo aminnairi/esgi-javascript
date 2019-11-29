@@ -100,9 +100,13 @@ interface PropAccessInput {
     [key: string]: PropAccessInput | unknown
 };
 
-export function prop_access(input: PropAccessInput, properties: string | null, tested: string[] = []): unknown {
+export function prop_access(input: PropAccessInput | null, properties: string | null, tested: string[] = []): unknown {
     if (properties === null || properties.length === 0) {
         return input;
+    }
+
+    if (input === null) {
+        return console.log(`${properties} not exist`);
     }
 
     const [first, ...rest]: string[] = properties.split(".");

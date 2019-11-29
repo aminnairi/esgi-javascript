@@ -79,6 +79,9 @@ function prop_access(input, properties, tested = []) {
     if (properties === null || properties.length === 0) {
         return input;
     }
+    if (input === null) {
+        return console.log(`${properties} not exist`);
+    }
     const [first, ...rest] = properties.split(".");
     tested.push(first);
     if (!(first in input)) {
