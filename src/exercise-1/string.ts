@@ -151,21 +151,18 @@ export function yoda(input: string): string {
 }
 
 
-function isLowerCase(input: string): boolean {
+function isLetter(input: string): boolean {
     return /[a-z]/.test(input);
 }
 
-function isUpperCase(input: string): boolean {
-    return /[A-Z]/.test(input);
-}
 
-export function vig(input: string, key: string): string {
+export function vig(input: unknown, key: string): string {
     if (arguments.length !== 2) {
         throw new Error("Expected exactly two arguments");
     }
 
     if (typeof input !== "string") {
-        throw new TypeError("First argument expected to be a string");
+        return "";
     }
 
     if (typeof key !== "string") {
@@ -180,24 +177,20 @@ export function vig(input: string, key: string): string {
         throw new ReferenceError("Second argument must not be empty");
     }
 
-    const INPUT_LENGTH: number = input.length;
-    const KEY_LENGTH: number = key.length;
+    const text: string = (input as string).toLowerCase();
+    const crypter: string = key.toLowerCase();
+    const TEXT_LENGTH: number = text.length;
+    const CRYPTER_LENGTH: number = crypter.length;
     let result: string = "";
 
-    for (let index: number = 0, characterIndex: number = 0; index < INPUT_LENGTH; index++) {
-        if (isUpperCase(input[index])) {
-            result += String.fromCharCode((input.charCodeAt(index) - 65 + key.charCodeAt(characterIndex % KEY_LENGTH) - 65) % 26 + 65)
+    for (let index: number = 0, characterIndex: number = 0; index < TEXT_LENGTH; index++) {
+        if (isLetter(text[index])) {
+            result += String.fromCharCode((text.charCodeAt(index) - 97 + crypter.charCodeAt(characterIndex % CRYPTER_LENGTH) - 97) % 26 + 97)
             characterIndex++;
             continue;
         }
 
-        if (isLowerCase(input[index])) {
-            result += String.fromCharCode((input.charCodeAt(index) - 97 + key.charCodeAt(characterIndex % KEY_LENGTH) - 97) % 26 + 97)
-            characterIndex++;
-            continue;
-        }
-
-        result += input[index];
+        result += text[index];
     }
 
     return result;
