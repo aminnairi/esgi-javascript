@@ -26,8 +26,16 @@ export function type_check_v2(input: unknown, options: TypeCheckV2Options) {
         return false;
     }
 
-    if (options.hasOwnProperty("value") && input !== (options.value as string)) {
-        return false;
+    if (options.hasOwnProperty("value")) {
+        if (type_check_v1(input, "object")) {
+            if (type_check_v1(options.value, "object") && JSON.stringify(options.value) !== JSON.stringify(input)) {
+                return false;
+            }
+        } else {
+            if (input !== options.value) {
+                return false;
+            }
+        }
     }
 
     if (options.hasOwnProperty("enum") && !(options.enum as unknown[]).includes(input)) {
