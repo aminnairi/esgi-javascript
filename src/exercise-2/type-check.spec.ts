@@ -3,7 +3,7 @@
 import "mocha";
 
 import { expect } from "chai";
-import { type_check_v1 } from "./type-check";
+import { type_check_v1, type_check_v2 } from "./type-check";
 
 describe("type check", () => {
     describe("type check v1", () => {
@@ -52,6 +52,24 @@ describe("type check", () => {
         it("should work for functions", () => {
             expect(type_check_v1(() => {}, "function")).to.be.true;
             expect(type_check_v1(() => {}, "undefined")).to.be.false;
+        });
+    });
+
+    describe("type check v2", () => {
+        it("should work for type checking", () => {
+            expect(type_check_v2({ prop1: 1 }, { type: "object" })).to.be.true;
+            expect(type_check_v2({ prop1: 1 }, { type: "string" })).to.be.false;
+        });
+
+        it("should work for value checking", () => {
+            expect(type_check_v2("foo", { type: "string", value: "foo" })).to.be.true;
+            expect(type_check_v2("foo", { type: "number", value: "foo" })).to.be.false;
+            expect(type_check_v2("foo", { type: "string", value: "bar" })).to.be.false;
+        });
+
+        it("should work for enum checking", () => {
+            expect(type_check_v2(3, { enum: [ "3", true, 3 ] })).to.be.true;
+            expect(type_check_v2(3, { enum: [ "2", true, 2 ] })).to.be.false;
         });
     });
 });
