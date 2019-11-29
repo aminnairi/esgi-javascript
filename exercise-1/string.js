@@ -111,18 +111,15 @@ function yoda(input) {
     const reversedInput = reversed.join(" ");
     return reversedInput;
 }
-function isLowerCase(input) {
+function isLetter(input) {
     return /[a-z]/.test(input);
-}
-function isUpperCase(input) {
-    return /[A-Z]/.test(input);
 }
 function vig(input, key) {
     if (arguments.length !== 2) {
         throw new Error("Expected exactly two arguments");
     }
     if (typeof input !== "string") {
-        throw new TypeError("First argument expected to be a string");
+        return "";
     }
     if (typeof key !== "string") {
         throw new TypeError("Second argument expected to be a string");
@@ -133,21 +130,18 @@ function vig(input, key) {
     if (key.length === 0) {
         throw new ReferenceError("Second argument must not be empty");
     }
-    const INPUT_LENGTH = input.length;
-    const KEY_LENGTH = key.length;
+    const text = input.toLowerCase();
+    const crypter = key.toLowerCase();
+    const TEXT_LENGTH = text.length;
+    const CRYPTER_LENGTH = crypter.length;
     let result = "";
-    for (let index = 0, characterIndex = 0; index < INPUT_LENGTH; index++) {
-        if (isUpperCase(input[index])) {
-            result += String.fromCharCode((input.charCodeAt(index) - 65 + key.charCodeAt(characterIndex % KEY_LENGTH) - 65) % 26 + 65);
+    for (let index = 0, characterIndex = 0; index < TEXT_LENGTH; index++) {
+        if (isLetter(text[index])) {
+            result += String.fromCharCode((text.charCodeAt(index) - 97 + crypter.charCodeAt(characterIndex % CRYPTER_LENGTH) - 97) % 26 + 97);
             characterIndex++;
             continue;
         }
-        if (isLowerCase(input[index])) {
-            result += String.fromCharCode((input.charCodeAt(index) - 97 + key.charCodeAt(characterIndex % KEY_LENGTH) - 97) % 26 + 97);
-            characterIndex++;
-            continue;
-        }
-        result += input[index];
+        result += text[index];
     }
     return result;
 }
