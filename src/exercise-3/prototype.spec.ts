@@ -55,4 +55,17 @@ describe("prototype", function() {
             expect("bonjour_le_monde".snake_case()).to.equal("bonjour_le_monde");
         });
     });
+
+    describe("leet", function() {
+        it("should be defined in the String.prototype", function() {
+            expect(String.prototype.leet).to.not.be.undefined;
+        });
+
+        it("should return the leet word", function() {
+            expect("bonjour".leet()).to.equal("b0nj0(_)r");
+            expect("monde".leet()).to.equal("m0nd3");
+            expect("bonjour le monde".leet()).to.equal("b0nj0(_)r l3 m0nd3");
+            expect("BONJOUR LE MONDE".leet()).to.equal("B0NJ0(_)R L3 M0ND3");
+        });
+    });
 });
