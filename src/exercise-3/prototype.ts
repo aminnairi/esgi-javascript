@@ -32,5 +32,5 @@ String.prototype.leet = function() {
 };
 
 String.prototype.verlan = function() {
-    return verlan(this);
+    return verlan(this as string);
 };
