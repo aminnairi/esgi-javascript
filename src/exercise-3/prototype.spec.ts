@@ -77,8 +77,8 @@ describe("prototype", function() {
         it("should return the verlan word", function() {
             expect("bonjour".verlan()).to.equal("ruojnob");
             expect("monde".verlan()).to.equal("ednom");
-            expect("bonjour le monde".verlan()).to.equal("ednom el ruojnob");
-            expect("BONJOUR LE MONDE".verlan()).to.equal("EDNOM EL RUOJNOB");
+            expect("bonjour le monde".verlan()).to.equal("ruojnob el ednom");
+            expect("BONJOUR LE MONDE".verlan()).to.equal("RUOJNOB EL EDNOM");
         });
     });
 });
