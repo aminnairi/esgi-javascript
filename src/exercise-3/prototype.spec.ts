@@ -81,4 +81,16 @@ describe("prototype", function() {
             expect("BONJOUR LE MONDE".verlan()).to.equal("RUOJNOB EL EDNOM");
         });
     });
+
+    describe("yoda", function() {
+        it("should be defined in the String.prototype", function() {
+            expect(String.prototype.yoda).to.not.be.undefined;
+        });
+
+        it("should return the yoda word", function() {
+            expect("bonjour".yoda()).to.equal("bonjour");
+            expect("bonjour le monde".yoda()).to.equal("monde le bonjour");
+            expect("BONJOUR LE MONDE".yoda()).to.equal("MONDE LE BONJOUR");
+        });
+    });
 });

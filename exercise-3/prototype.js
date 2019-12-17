@@ -85,6 +85,18 @@ function verlan(input) {
     const newInput = reversed.join(" ");
     return newInput;
 }
+function yoda(input) {
+    if (arguments.length !== 1) {
+        throw new Error("Expected only one argument");
+    }
+    if (typeof input !== "string") {
+        return "";
+    }
+    const words = input.split(" ");
+    const reversed = words.reverse();
+    const reversedInput = reversed.join(" ");
+    return reversedInput;
+}
 
 String.prototype.ucfirst = function () {
     return ucfirst(this);
@@ -103,4 +115,7 @@ String.prototype.leet = function () {
 };
 String.prototype.verlan = function () {
     return verlan(this);
+};
+String.prototype.yoda = function () {
+    return yoda(this);
 };
