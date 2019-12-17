@@ -1,5 +1,3 @@
-"use strict";
-;
 function type_check_v1(input, expectedType) {
     if (arguments.length !== 2) {
         throw new Error("Expected exactly two arguments");
@@ -32,3 +30,4 @@ function type_check_v2(input, options) {
     }
     return true;
 }
+
