@@ -29,4 +29,17 @@ describe("prototype", function() {
             expect("bonjour_le_monde".capitalize()).to.equal("Bonjour_le_monde");
         });
     });
+
+    describe("camelCase", function() {
+        it("should be defined in the String.prototype", function() {
+            expect(String.prototype.camelCase).to.not.be.undefined;
+        });
+
+        it("should return the camel cased words", function() {
+            expect("bonjour le monde".camelCase()).to.equal("BonjourLeMonde");
+            expect("BONJOUR LE MONDE".camelCase()).to.equal("BonjourLeMonde");
+            expect("Bonjour Le Monde".camelCase()).to.equal("BonjourLeMonde");
+            expect("bonjour_le_monde".camelCase()).to.equal("BonjourLeMonde");
+        });
+    });
 });
