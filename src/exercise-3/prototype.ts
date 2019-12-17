@@ -1,4 +1,4 @@
-import { ucfirst, capitalize, camelCase, snake_case, leet } from "../exercise-1/string"
+import { ucfirst, capitalize, camelCase, snake_case, leet, verlan } from "../exercise-1/string"
 
 declare global {
     interface String {
@@ -7,6 +7,7 @@ declare global {
         camelCase(): string;
         snake_case(): string;
         leet(): string;
+        verlan(): string;
     }
 }
 
@@ -28,4 +29,8 @@ String.prototype.snake_case = function() {
 
 String.prototype.leet = function() {
     return leet(this);
+};
+
+String.prototype.verlan = function() {
+    return verlan(this);
 };
