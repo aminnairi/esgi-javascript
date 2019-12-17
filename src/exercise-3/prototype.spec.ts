@@ -68,4 +68,17 @@ describe("prototype", function() {
             expect("BONJOUR LE MONDE".leet()).to.equal("B0NJ0(_)R L3 M0ND3");
         });
     });
+
+    describe("verlan", function() {
+        it("should be defined in the String.prototype", function() {
+            expect(String.prototype.verlan).to.not.be.undefined;
+        });
+
+        it("should return the verlan word", function() {
+            expect("bonjour".verlan()).to.equal("ruojnob");
+            expect("monde".verlan()).to.equal("ednom");
+            expect("bonjour le monde".verlan()).to.equal("ruojnob el ednom");
+            expect("BONJOUR LE MONDE".verlan()).to.equal("RUOJNOB EL EDNOM");
+        });
+    });
 });
