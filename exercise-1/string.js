@@ -1,4 +1,3 @@
-"use strict";
 function ucfirst(input) {
     if (arguments.length !== 1) {
         throw new Error("Expected only one argument");
@@ -74,7 +73,6 @@ function leet(input) {
     const encryptedString = encryptedCharacters.join("");
     return encryptedString;
 }
-;
 function prop_access(input, properties, tested = []) {
     if (properties === null || properties.length === 0) {
         return input;
@@ -148,3 +146,4 @@ function vig(input, key) {
     }
     return result;
 }
+
