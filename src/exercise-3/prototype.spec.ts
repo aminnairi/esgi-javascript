@@ -42,4 +42,17 @@ describe("prototype", function() {
             expect("bonjour_le_monde".camelCase()).to.equal("BonjourLeMonde");
         });
     });
+
+    describe("snake_case", function() {
+        it("should be defined in the String.prototype", function() {
+            expect(String.prototype.snake_case).to.not.be.undefined;
+        });
+
+        it("should return the snake cased words", function() {
+            expect("bonjour le monde".snake_case()).to.equal("bonjour_le_monde");
+            expect("BONJOUR LE MONDE".snake_case()).to.equal("bonjour_le_monde");
+            expect("Bonjour Le Monde".snake_case()).to.equal("bonjour_le_monde");
+            expect("bonjour_le_monde".snake_case()).to.equal("bonjour_le_monde");
+        });
+    });
 });
