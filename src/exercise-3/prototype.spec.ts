@@ -74,7 +74,7 @@ describe("prototype", function() {
             expect(String.prototype.verlan).to.not.be.undefined;
         });
 
-        it("should return the leet word", function() {
+        it("should return the verlan word", function() {
             expect("bonjour".verlan()).to.equal("ruojnob");
             expect("monde".verlan()).to.equal("ednom");
             expect("bonjour le monde".verlan()).to.equal("ednom el ruojnob");
