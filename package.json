@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "esgi-javascript",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Repository for the JavaScript course at the ESGI",
   "main": "demo.js",
   "scripts": {
