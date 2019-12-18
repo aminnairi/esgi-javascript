@@ -93,4 +93,14 @@ describe("prototype", function() {
             expect("BONJOUR LE MONDE".yoda()).to.equal("MONDE LE BONJOUR");
         });
     });
+
+    describe("vig", function() {
+        it("should be defined in the String.prototype", function() {
+            expect(String.prototype.vig).to.not.be.undefined;
+        });
+
+        it("should return the vig word", function() {
+            expect("wikipedia".vig("crypto")).to.equal("yzixisfzy");
+        });
+    });
 });
