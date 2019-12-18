@@ -97,6 +97,40 @@ function yoda(input) {
     const reversedInput = reversed.join(" ");
     return reversedInput;
 }
+function isLetter(input) {
+    return /[a-z]/.test(input);
+}
+function vig(input, key) {
+    if (arguments.length !== 2) {
+        throw new Error("Expected exactly two arguments");
+    }
+    if (typeof input !== "string") {
+        return "";
+    }
+    if (typeof key !== "string") {
+        throw new TypeError("Second argument expected to be a string");
+    }
+    if (input.length === 0) {
+        throw new ReferenceError("First argument must not be empty");
+    }
+    if (key.length === 0) {
+        throw new ReferenceError("Second argument must not be empty");
+    }
+    const text = input.toLowerCase();
+    const crypter = key.toLowerCase();
+    const TEXT_LENGTH = text.length;
+    const CRYPTER_LENGTH = crypter.length;
+    let result = "";
+    for (let index = 0, characterIndex = 0; index < TEXT_LENGTH; index++) {
+        if (isLetter(text[index])) {
+            result += String.fromCharCode((text.charCodeAt(index) - 97 + crypter.charCodeAt(characterIndex % CRYPTER_LENGTH) - 97) % 26 + 97);
+            characterIndex++;
+            continue;
+        }
+        result += text[index];
+    }
+    return result;
+}
 
 String.prototype.ucfirst = function () {
     return ucfirst(this);
@@ -118,4 +152,7 @@ String.prototype.verlan = function () {
 };
 String.prototype.yoda = function () {
     return yoda(this);
+};
+String.prototype.vig = function (key) {
+    return vig(this, key);
 };
