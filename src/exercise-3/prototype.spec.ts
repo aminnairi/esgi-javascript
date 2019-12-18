@@ -103,4 +103,14 @@ describe("prototype", function() {
             expect("wikipedia".vig("crypto")).to.equal("yzixisfzy");
         });
     });
+
+    describe("prop_access", function() {
+        it("should be defined in the String.prototype", function() {
+            expect(String.prototype.prop_access).to.not.be.undefined;
+        });
+
+        it("should return the prop_access word", function() {
+            expect({languages: { web: [ "php", "javascript" ]}}.prop_access("languages.web")).to.deep.equal(["php", "javascript"]);
+        });
+    });
 });
