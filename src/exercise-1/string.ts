@@ -96,7 +96,7 @@ export function leet(input: unknown): string {
     return encryptedString;
 }
 
-interface PropAccessInput {
+export interface PropAccessInput {
     [key: string]: PropAccessInput | unknown
 };
 

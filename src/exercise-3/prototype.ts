@@ -1,4 +1,15 @@
-import { ucfirst, capitalize, camelCase, snake_case, leet, verlan, yoda, vig } from "../exercise-1/string"
+import {
+    ucfirst,
+    capitalize,
+    camelCase,
+    snake_case,
+    leet,
+    verlan,
+    yoda,
+    vig,
+    prop_access,
+    PropAccessInput
+} from "../exercise-1/string"
 
 declare global {
     interface String {
@@ -10,6 +21,10 @@ declare global {
         verlan(): string;
         yoda(): string;
         vig(key: string): string;
+    }
+
+    interface Object {
+        prop_access(properties: string | null): unknown;
     }
 }
 
@@ -43,4 +58,8 @@ String.prototype.yoda = function(): string {
 
 String.prototype.vig = function(key: string): string {
     return vig(this, key);
+};
+
+Object.prototype.prop_access = function(properties: string | null) {
+    return prop_access(this as PropAccessInput, properties); 
 };

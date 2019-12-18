@@ -73,6 +73,21 @@ function leet(input) {
     const encryptedString = encryptedCharacters.join("");
     return encryptedString;
 }
+function prop_access(input, properties, tested = []) {
+    if (properties === null || properties.length === 0) {
+        return input;
+    }
+    if (input === null) {
+        return console.log(`${properties} not exist`);
+    }
+    const [first, ...rest] = properties.split(".");
+    tested.push(first);
+    if (!(first in input)) {
+        const stringified = tested.join(".");
+        return console.log(`${stringified} not exist`);
+    }
+    return prop_access(input[first], rest.join("."), tested);
+}
 function verlan(input) {
     if (arguments.length !== 1) {
         throw new Error("Expected only one argument");
@@ -155,4 +170,7 @@ String.prototype.yoda = function () {
 };
 String.prototype.vig = function (key) {
     return vig(this, key);
+};
+Object.prototype.prop_access = function (properties) {
+    return prop_access(this, properties);
 };
